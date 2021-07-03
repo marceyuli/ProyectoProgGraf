@@ -1,0 +1,16 @@
+D:\Yuliana\Materias\Grafica\GLControl\OpenTK.WinForms\bin\Debug\netcoreapp3.1\OpenTK.WinForms.deps.json
+D:\Yuliana\Materias\Grafica\GLControl\OpenTK.WinForms\bin\Debug\netcoreapp3.1\OpenTK.WinForms.dll
+D:\Yuliana\Materias\Grafica\GLControl\OpenTK.WinForms\bin\Debug\netcoreapp3.1\OpenTK.WinForms.pdb
+D:\Yuliana\Materias\Grafica\GLControl\OpenTK.WinForms\obj\Debug\netcoreapp3.1\OpenTK.WinForms.AssemblyInfoInputs.cache
+D:\Yuliana\Materias\Grafica\GLControl\OpenTK.WinForms\obj\Debug\netcoreapp3.1\OpenTK.WinForms.AssemblyInfo.cs
+D:\Yuliana\Materias\Grafica\GLControl\OpenTK.WinForms\obj\Debug\netcoreapp3.1\OpenTK.WinForms.csproj.CoreCompileInputs.cache
+D:\Yuliana\Materias\Grafica\GLControl\OpenTK.WinForms\obj\Debug\netcoreapp3.1\OpenTK.WinForms.dll
+D:\Yuliana\Materias\Grafica\GLControl\OpenTK.WinForms\obj\Debug\netcoreapp3.1\OpenTK.WinForms.pdb
+D:\Yuliana\Materias\Grafica\ProyectoProgGrafica\OpenTK.WinForms\bin\Debug\netcoreapp3.1\OpenTK.WinForms.deps.json
+D:\Yuliana\Materias\Grafica\ProyectoProgGrafica\OpenTK.WinForms\bin\Debug\netcoreapp3.1\OpenTK.WinForms.dll
+D:\Yuliana\Materias\Grafica\ProyectoProgGrafica\OpenTK.WinForms\bin\Debug\netcoreapp3.1\OpenTK.WinForms.pdb
+D:\Yuliana\Materias\Grafica\ProyectoProgGrafica\OpenTK.WinForms\obj\Debug\netcoreapp3.1\OpenTK.WinForms.AssemblyInfoInputs.cache
+D:\Yuliana\Materias\Grafica\ProyectoProgGrafica\OpenTK.WinForms\obj\Debug\netcoreapp3.1\OpenTK.WinForms.AssemblyInfo.cs
+D:\Yuliana\Materias\Grafica\ProyectoProgGrafica\OpenTK.WinForms\obj\Debug\netcoreapp3.1\OpenTK.WinForms.csproj.CoreCompileInputs.cache
+D:\Yuliana\Materias\Grafica\ProyectoProgGrafica\OpenTK.WinForms\obj\Debug\netcoreapp3.1\OpenTK.WinForms.dll
+D:\Yuliana\Materias\Grafica\ProyectoProgGrafica\OpenTK.WinForms\obj\Debug\netcoreapp3.1\OpenTK.WinForms.pdb
