@@ -41,10 +41,10 @@ namespace ProyectoProgGrafica
             this.glControl.APIVersion = new System.Version(3, 3, 0, 0);
             this.glControl.Flags = OpenTK.Windowing.Common.ContextFlags.Default;
             this.glControl.IsEventDriven = true;
-            this.glControl.Location = new System.Drawing.Point(211, 120);
+            this.glControl.Location = new System.Drawing.Point(0, -1);
             this.glControl.Name = "glControl";
             this.glControl.Profile = OpenTK.Windowing.Common.ContextProfile.Compatability;
-            this.glControl.Size = new System.Drawing.Size(379, 211);
+            this.glControl.Size = new System.Drawing.Size(970, 493);
             this.glControl.TabIndex = 3;
             this.glControl.Text = "glControl1";
             this.glControl.Load += new System.EventHandler(this.glControl_Load);
@@ -55,7 +55,7 @@ namespace ProyectoProgGrafica
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(964, 496);
             this.Controls.Add(this.glControl);
             this.Name = "Form1";
             this.Text = "Form1";
