@@ -33,9 +33,9 @@ namespace ProyectoProgGrafica
             InitializeComponent();
            // VSync = VSyncMode.On;
             escenario = new Escenario();
-            escenario.add("Silla0", new Silla(0, 0, 0, 0.5f, 1, 0.5f));
+           // escenario.add("Silla0", new Silla(0, 0, 0, 0.5f, 1, 0.5f));
              //escenario.add("ABC", new Silla(0, 0, 0, 1, 2, 1));
-             escenario.add("Silla2", new Silla(2, 2, 0, 0.5f, 1, 0.5f));
+           //  escenario.add("Silla2", new Silla(2, 2, 0, 0.5f, 1, 0.5f));
              escenario.add("Silla3", new Silla(-4, -4,0, 0.5f, 1, 0.5f));
         }
         protected void RenderNew()
@@ -61,6 +61,7 @@ namespace ProyectoProgGrafica
         {
             glControl.MakeCurrent();
 
+            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
             GL.ClearColor(Color4.MidnightBlue);
             GL.Enable(EnableCap.DepthTest);
 
@@ -70,12 +71,10 @@ namespace ProyectoProgGrafica
 
             //GL.Rotate(_angle, 0.0f, 1.0f, 0.0f);
 
-            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
-
-            escenario.Rotar(_angle, 0.0f, 1.0f, 0.0f);
+            // escenario.Rotar(_angle, 0.0f, 1.0f, 0.0f);
             //escenario.Trasladar(0.5f, 0.01f, 0.01f);
-           // escenario.Escalar(1.05, 1.05, 1.05);
-           escenario.Dibujar();
+            // escenario.Escalar(1.05, 1.05, 1.05);
+            escenario.Dibujar();
             aux = aux + 0.0001f;
             //   Context.SwapBuffers();
             theta += 0.1f;

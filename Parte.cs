@@ -7,8 +7,9 @@ namespace ProgGrafica
     internal class Parte : IObjeto
     {
         float x, y, z, profundo, alto, ancho;
+        Vector3 traslacionParte;
 
-        public Parte(float x, float y, float z, float ancho, float alto, float profundo)
+        public Parte(float x, float y, float z, float ancho, float alto, float profundo,Vector3 traslacion)
         {
             this.x = x;
             this.y = y;
@@ -16,18 +17,20 @@ namespace ProgGrafica
             this.profundo = profundo;
             this.alto = alto;
             this.ancho = ancho;
+            traslacionParte = new Vector3(traslacion.X,traslacion.Y,traslacion.Z);
+
         }
 
         public void Dibujar()
         {
 
            // GL.ClearColor(Color4.MidnightBlue);
-            GL.Enable(EnableCap.DepthTest);
-            Matrix4 lookat = Matrix4.LookAt(0, 5, 5, 0, 0, 0, 0, 1, 0);
-            GL.MatrixMode(MatrixMode.Modelview);
+            //GL.Enable(EnableCap.DepthTest);
+            //Matrix4 lookat = Matrix4.LookAt(0, 5, 5, 0, 0, 0, 0, 1, 0);
+            //GL.MatrixMode(MatrixMode.Modelview);
             //GL.LoadMatrix(ref lookat);
-          //  GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
-
+            //  GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+            
             GL.Begin(PrimitiveType.Quads);
 
             //Frontal
@@ -78,16 +81,6 @@ namespace ProgGrafica
             GL.Vertex3(x - profundo / 2, y - ancho / 2, z + alto / 2); //C
             GL.Vertex3(x + profundo / 2, y - ancho / 2, z + alto / 2); //D
 
-
-
-
-
-
-
-
-
-
-
             ////Derecho
             GL.Color3(0.5, 0.0, 0.999999);
             GL.Vertex3(x + profundo / 2, y + ancho / 2, z - alto / 2); //A
@@ -99,6 +92,7 @@ namespace ProgGrafica
 
 
             GL.End();
+          //  GL.Translate(traslacionParte);
         }
 
         public void Escalar(double ex, double ey, double ez)

@@ -1,4 +1,5 @@
 ﻿using OpenTK.Graphics.OpenGL;
+using OpenTK.Mathematics;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,36 +9,40 @@ namespace ProgGrafica
 {
     class Silla : Objeto
     {
+        Vector3 traslacionSilla;
+
         public Silla(float x, float y, float z, float ancho, float alto, float profundo)
         {
-            this.x = x;
-            this.y = y;
-            this.z = z;
+            this.x = 0;
+            this.y = 0;
+            this.z = 0;
             this.ancho = ancho;
             this.alto = alto;
             this.profundo = profundo;
+            traslacionSilla = new Vector3(x, y, z);
             actualizarPuntos();
 
         }
 
         public Silla()
-        {
+        {   
             partes  = new Hashtable();
+            /*
             //Pata izquierda delantera
-            partes.Add("PID" ,new Parte(0f, -0.5f, 0.5f, 0.05f, 1f, 0.05f));
+            partes.Add("PID" ,new Parte(0f, -0.5f, 0.5f, 0.05f, 1f, 0.05f, traslacionSilla));
             //Pata derecha delantera
-            partes.Add("PDD", new Parte(0f, 0.5f, 0.5f, 0.05f, 1f, 0.05f));
+            partes.Add("PDD", new Parte(0f, 0.5f, 0.5f, 0.05f, 1f, 0.05f, traslacionSilla));
             //Pata trasera izquierda
-            partes.Add("PTI", new Parte(1f, -0.5f, 1f, 0.05f, 2f, 0.05f));
+            partes.Add("PTI", new Parte(1f, -0.5f, 1f, 0.05f, 2f, 0.05f, traslacionSilla));
             //Pata trasera derecha
-            partes.Add("PTD" ,new Parte(1f, 0.5f, 1f, 0.05f, 2f, 0.05f));
+            partes.Add("PTD" ,new Parte(1f, 0.5f, 1f, 0.05f, 2f, 0.05f, traslacionSilla));
             //Tabla de sentar
-           partes.Add("TDS", new Parte(0.5f, 0f, 1f, 1f, 0.05f, 1f));
+           partes.Add("TDS", new Parte(0.5f, 0f, 1f, 1f, 0.05f, 1f, traslacionSilla));
             //Respaldar arriba
          //  partes.AddLast(new Parte(1f, 0f, 2f, 1f, 0.05f, 0.05f));
             //Tabla de la espalda
-            partes.Add("TDE", new Parte(1f, 0f, 1.5f, 1f, 1f, 0.05f));
-
+            partes.Add("TDE", new Parte(1f, 0f, 1.5f, 1f, 1f, 0.05f, traslacionSilla));
+            */
         }
 
         override public void Dibujar()
@@ -85,19 +90,19 @@ namespace ProgGrafica
          {
              partes = new Hashtable();
             //Pata izquierda delantera
-            partes.Add("PID",new Parte(0f + x, -0.25f * alto + y, 0.5f * profundo + z, 0.05f * ancho, 0.5f * alto, 0.05f * profundo));
+            partes.Add("PID",new Parte(0f + x, -0.25f * alto + y, 0.5f * profundo + z, 0.05f * ancho, 0.5f * alto, 0.05f * profundo, traslacionSilla));
              //Pata derecha delantera
-             partes.Add("PDT",new Parte(0f + x, 0.25f * alto + y, 0.5f * profundo + z, 0.05f * ancho, 0.5f * alto, 0.05f * profundo));
+             partes.Add("PDT",new Parte(0f + x, 0.25f * alto + y, 0.5f * profundo + z, 0.05f * ancho, 0.5f * alto, 0.05f * profundo, traslacionSilla));
              //Pata trasera izquierda
-             partes.Add("PTI",new Parte(ancho + x, -0.25f * alto + y, 1f * profundo + z, 0.05f * ancho, alto, 0.05f * profundo));
+             partes.Add("PTI",new Parte(ancho + x, -0.25f * alto + y, 1f * profundo + z, 0.05f * ancho, alto, 0.05f * profundo, traslacionSilla));
              //Pata trasera derecha
-             partes.Add("PTD",new Parte(ancho + x, 0.25f * alto + y, 1f * profundo + z, 0.05f * ancho, alto, 0.05f * profundo));
+             partes.Add("PTD",new Parte(ancho + x, 0.25f * alto + y, 1f * profundo + z, 0.05f * ancho, alto, 0.05f * profundo, traslacionSilla));
              //Tabla de sentar
-             partes.Add("TDS",new Parte(0.5f * ancho + x, 0f + y, profundo + z, ancho, 0.025f * alto, profundo));
+             partes.Add("TDS",new Parte(0.5f * ancho + x, 0f + y, profundo + z, ancho, 0.025f * alto, profundo, traslacionSilla));
              //Respaldar arriba
              //   partes.AddLast(new Parte(1f+x, 0f+y, 2f+z, ancho, 0.025f * alto, 0.05f*profundo));
              //Tabla de la espalda
-             partes.Add("TDE",new Parte(ancho + x, 0f + y, 1.5f * profundo + z, ancho, 0.5f * alto, 0.05f * profundo));
+             partes.Add("TDE",new Parte(ancho + x, 0f + y, 1.5f * profundo + z, ancho, 0.5f * alto, 0.05f * profundo, traslacionSilla));
          }
         /*  override public void Trasladar(float dx, float dy, float dz)
          {
