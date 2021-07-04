@@ -13,16 +13,16 @@ namespace ProgGrafica
 
         public abstract void Dibujar(String nombreParte);
 
-        public abstract void Escalar(double ex, double ey, double ez);
+        public abstract void Escalar(float ex, float ey, float ez);
 
 
-        public abstract void Trasladar(double x, double y, double z);
+        public abstract void Trasladar(float x, float y, float z);
 
 
 
-        public abstract void Rotar(double angle, double rx, double ry, double rz);
+        public abstract void Rotar(float rx, float ry, float rz);
 
-        public abstract void Rotar(double angle, double rx, double ry, double rz, String nombreParte);
+        public abstract void Rotar(float rx, float ry, float rz, String nombreParte);
         }
     }
 

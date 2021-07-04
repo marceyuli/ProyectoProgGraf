@@ -63,7 +63,7 @@ namespace ProgGrafica
             }
         }
 
-        override public void Escalar(double ex, double ey, double ez)
+        override public void Escalar(float ex, float ey, float ez)
         {
             foreach (DictionaryEntry parte in partes)
             {
@@ -71,28 +71,28 @@ namespace ProgGrafica
                 prt.Escalar(ex, ey, ez);
             }
         }
-        override public void Rotar(double angle, double rx, double ry, double rz)
+        override public void Rotar(float rx, float ry, float rz)
         {
             foreach (DictionaryEntry parte in partes)
             {
                 Parte prt = (Parte)parte.Value;
-                prt.Rotar(angle, rx, ry, rz);
+                prt.Rotar( rx, ry, rz);
             }
         }
 
-        override public void Rotar(double angle, double rx, double ry, double rz, String nombreParte)
+        override public void Rotar(float rx, float ry, float rz, String nombreParte)
         {
             foreach (DictionaryEntry parte in partes)
             {
                 Parte prt = (Parte)parte.Value;
                 if (parte.Key == nombreParte)
                 {
-                    prt.Rotar(angle, rx, ry, rz);
+                    prt.Rotar( rx, ry, rz);
                 }
             }
         }
 
-        override public void Trasladar(double dx, double dy, double dz)
+        override public void Trasladar(float dx, float dy, float dz)
         {
             foreach (DictionaryEntry parte in partes)
             {

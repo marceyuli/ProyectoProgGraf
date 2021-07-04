@@ -74,18 +74,18 @@ namespace ProyectoProgGrafica
 
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
             // ROTA TODO FUNCA
-            escenario.Rotar(_angle, 0.0f, 1.0f, 0.0f);
+            //escenario.Rotar( 0.0f, _angle, 0.0f);
 
             escenario.Trasladar(0.01f, 0.01f, 0.01f);
             escenario.Escalar(1f, 1f, 1f);
             // ROTAR SOLO UNA PARTE ( NO FUNCA )
-            //escenario.Rotar(_angle, 0.0f, 1.0f, 0.0f, "Silla2", "TDS");
+            escenario.Rotar( 0.0f, _angle, 0.0f, "Silla2", "TDS");
 
             // DIBUJA TODO FUNCA
             escenario.Dibujar();
 
-            // DIBUJA SOLO UNA PARTE FUNCA
-            //escenario.Dibujar("Silla0", "TDS");
+           // DIBUJA SOLO UNA PARTE FUNCA
+           // escenario.Dibujar("Silla0", "TDS");
 
 
 

@@ -7,7 +7,7 @@ namespace ProgGrafica
     internal class Parte : IObjeto
     {
         float x, y, z, profundo, alto, ancho;
-
+        Vector3 vectorRotacion;
         public Parte(float x, float y, float z, float ancho, float alto, float profundo)
         {
             this.x = x;
@@ -16,6 +16,10 @@ namespace ProgGrafica
             this.profundo = profundo;
             this.alto = alto;
             this.ancho = ancho;
+
+            vectorRotacion.X = 0;
+            vectorRotacion.Y = 0;
+            vectorRotacion.Z = 0;
         }
 
         public void Dibujar()
@@ -23,9 +27,9 @@ namespace ProgGrafica
             GL.PushMatrix();
             //GL.Translate(0, 1, 0);
             // Holis
-            //GL.Rotate(0.01f, 1, 0, 0);
-            //GL.Rotate(0.01f, 0, 1, 0);
-            //GL.Rotate(0.01, 0, 0, 1);
+            GL.Rotate(vectorRotacion.X,1,0,0);
+            GL.Rotate(vectorRotacion.Y, 0, 1, 0);
+            GL.Rotate(vectorRotacion.Z, 0, 0, 1);
 
             //GL.Scale(escala.X, escala.Y, escala.Z);
             // GL.ClearColor(Color4.MidnightBlue);
@@ -109,7 +113,7 @@ namespace ProgGrafica
             GL.PopMatrix();
         }
 
-        public void Escalar(double ex, double ey, double ez)
+        public void Escalar(float ex, float ey, float ez)
         {
             GL.Scale(ex, ey, ez);
         }
@@ -119,9 +123,12 @@ namespace ProgGrafica
              this.alto = this.alto * porcentaje;
              this.profundo = this.profundo * porcentaje;
          }*/
-        public void Rotar(double angle, double rx, double ry, double rz)
+        public void Rotar(float rx, float ry, float rz)
         {
-            GL.Rotate(angle, rx, ry, rz);
+            // GL.Rotate(angle, rx, ry, rz);
+            vectorRotacion.X = rx;
+            vectorRotacion.Y = ry;
+            vectorRotacion.Z = rz;
         }
 
         /*public void Rotar(double teta, double beta, double alfa)
@@ -134,7 +141,7 @@ namespace ProgGrafica
                 z * ((Math.Sin(alfa) * Math.Sin(beta) * Math.Cos(teta)) - (Math.Cos(alfa) * Math.Sin(teta))));
             z = (float)(-x * Math.Sin(beta) + y * (Math.Cos(beta) * Math.Sin(teta)) + z * (Math.Cos(beta) * Math.Cos(teta)));
         }*/
-        public void Trasladar(double dx, double dy, double dz)
+        public void Trasladar(float dx, float dy, float dz)
         {
             GL.Translate(dx, dy, dz);
         }

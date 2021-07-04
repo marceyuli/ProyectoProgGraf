@@ -7,9 +7,9 @@ namespace ProgGrafica
     interface IObjeto
     {
         void Dibujar();
-        void Trasladar(double dx, double dy, double dz);
-        void Rotar(double angle, double rx, double ry, double rz);
-        void Escalar(double ex, double ey, double ez);
+        void Trasladar(float dx, float dy, float dz);
+        void Rotar( float rx, float ry, float rz);
+        void Escalar(float ex, float ey, float ez);
 
     }
 }

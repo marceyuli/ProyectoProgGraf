@@ -16,7 +16,7 @@ namespace ProgGrafica
         {
             objetos.Add(nombre, nuevoObjeto);
         }
-        public void Escalar(double ex, double ey, double ez)
+        public void Escalar(float ex, float ey, float ez)
         {
             foreach (DictionaryEntry objeto in objetos)
             {
@@ -47,7 +47,7 @@ namespace ProgGrafica
 
         }
 
-        public void Trasladar(double x, double y, double z)
+        public void Trasladar(float x, float y, float z)
         {
             foreach (DictionaryEntry objeto in objetos)
             {
@@ -55,24 +55,24 @@ namespace ProgGrafica
                 obj.Trasladar(x, y, z);
             }
         }
-        public void Rotar(double angle, double rx, double ry, double rz)
+        public void Rotar( float rx, float ry, float rz)
         {
             foreach (DictionaryEntry objeto in objetos)
             {
                 Objeto obj = (Objeto)objeto.Value;
-                obj.Rotar(angle, rx, ry, rz);
+                obj.Rotar( rx, ry, rz);
 
             }
         }
 
-        public void Rotar(double angle, double rx, double ry, double rz, String nombreObjeto, String nombreParte)
+        public void Rotar(float rx, float ry, float rz, String nombreObjeto, String nombreParte)
         {
             foreach (DictionaryEntry objeto in objetos)
             {
                 Objeto obj = (Objeto)objeto.Value;
                 if (objeto.Key == nombreObjeto)
                 {
-                    obj.Rotar(angle, rx, ry, rz, nombreParte);
+                    obj.Rotar( rx, ry, rz, nombreParte);
                 }
 
             }
