@@ -20,13 +20,20 @@ namespace ProgGrafica
 
         public void Dibujar()
         {
+            GL.PushMatrix();
+            //GL.Translate(0, 1, 0);
+            // Holis
+            //GL.Rotate(0.01f, 1, 0, 0);
+            //GL.Rotate(0.01f, 0, 1, 0);
+            //GL.Rotate(0.01, 0, 0, 1);
 
-           // GL.ClearColor(Color4.MidnightBlue);
-            GL.Enable(EnableCap.DepthTest);
-            Matrix4 lookat = Matrix4.LookAt(0, 5, 5, 0, 0, 0, 0, 1, 0);
-            GL.MatrixMode(MatrixMode.Modelview);
+            //GL.Scale(escala.X, escala.Y, escala.Z);
+            // GL.ClearColor(Color4.MidnightBlue);
+            //GL.Enable(EnableCap.DepthTest);
+            //Matrix4 lookat = Matrix4.LookAt(0, 5, 5, 0, 0, 0, 0, 1, 0);
+            //GL.MatrixMode(MatrixMode.Modelview);
             //GL.LoadMatrix(ref lookat);
-          //  GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+            //  GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
             GL.Begin(PrimitiveType.Quads);
 
@@ -99,6 +106,7 @@ namespace ProgGrafica
 
 
             GL.End();
+            GL.PopMatrix();
         }
 
         public void Escalar(double ex, double ey, double ez)
@@ -111,9 +119,9 @@ namespace ProgGrafica
              this.alto = this.alto * porcentaje;
              this.profundo = this.profundo * porcentaje;
          }*/
-        public void Rotar(double angle,double rx, double ry, double rz)
+        public void Rotar(double angle, double rx, double ry, double rz)
         {
-            GL.Rotate(angle,rx,ry,rz);
+            GL.Rotate(angle, rx, ry, rz);
         }
 
         /*public void Rotar(double teta, double beta, double alfa)
@@ -128,7 +136,7 @@ namespace ProgGrafica
         }*/
         public void Trasladar(double dx, double dy, double dz)
         {
-            GL.Translate(dx,dy,dz);
+            GL.Translate(dx, dy, dz);
         }
         /*public void Trasladar(float dx, float dy, float dz)
     {

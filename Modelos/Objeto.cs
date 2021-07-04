@@ -11,6 +11,8 @@ namespace ProgGrafica
         public Hashtable partes;
         public abstract void Dibujar();
 
+        public abstract void Dibujar(String nombreParte);
+
         public abstract void Escalar(double ex, double ey, double ez);
 
 
@@ -19,6 +21,8 @@ namespace ProgGrafica
 
 
         public abstract void Rotar(double angle, double rx, double ry, double rz);
+
+        public abstract void Rotar(double angle, double rx, double ry, double rz, String nombreParte);
         }
     }
 

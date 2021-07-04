@@ -22,19 +22,19 @@ namespace ProgGrafica
 
         public Silla()
         {
-            partes  = new Hashtable();
+            partes = new Hashtable();
             //Pata izquierda delantera
-            partes.Add("PID" ,new Parte(0f, -0.5f, 0.5f, 0.05f, 1f, 0.05f));
+            partes.Add("PID", new Parte(0f, -0.5f, 0.5f, 0.05f, 1f, 0.05f));
             //Pata derecha delantera
             partes.Add("PDD", new Parte(0f, 0.5f, 0.5f, 0.05f, 1f, 0.05f));
             //Pata trasera izquierda
             partes.Add("PTI", new Parte(1f, -0.5f, 1f, 0.05f, 2f, 0.05f));
             //Pata trasera derecha
-            partes.Add("PTD" ,new Parte(1f, 0.5f, 1f, 0.05f, 2f, 0.05f));
+            partes.Add("PTD", new Parte(1f, 0.5f, 1f, 0.05f, 2f, 0.05f));
             //Tabla de sentar
-           partes.Add("TDS", new Parte(0.5f, 0f, 1f, 1f, 0.05f, 1f));
+            partes.Add("TDS", new Parte(0.5f, 0f, 1f, 1f, 0.05f, 1f));
             //Respaldar arriba
-         //  partes.AddLast(new Parte(1f, 0f, 2f, 1f, 0.05f, 0.05f));
+            //  partes.AddLast(new Parte(1f, 0f, 2f, 1f, 0.05f, 0.05f));
             //Tabla de la espalda
             partes.Add("TDE", new Parte(1f, 0f, 1.5f, 1f, 1f, 0.05f));
 
@@ -45,10 +45,24 @@ namespace ProgGrafica
             foreach (DictionaryEntry parte in partes)
             {
                 Parte prt = (Parte)parte.Value;
-                    prt.Dibujar();
-                
+                prt.Dibujar();
+
             }
         }
+
+        override public void Dibujar(String nombreParte)
+        {
+            foreach (DictionaryEntry parte in partes)
+            {
+                Parte prt = (Parte)parte.Value;
+                if (parte.Key == nombreParte)
+                {
+                    prt.Dibujar();
+                }
+
+            }
+        }
+
         override public void Escalar(double ex, double ey, double ez)
         {
             foreach (DictionaryEntry parte in partes)
@@ -62,10 +76,22 @@ namespace ProgGrafica
             foreach (DictionaryEntry parte in partes)
             {
                 Parte prt = (Parte)parte.Value;
-                
-                    prt.Rotar(angle, rx, ry, rz);
+                prt.Rotar(angle, rx, ry, rz);
             }
         }
+
+        override public void Rotar(double angle, double rx, double ry, double rz, String nombreParte)
+        {
+            foreach (DictionaryEntry parte in partes)
+            {
+                Parte prt = (Parte)parte.Value;
+                if (parte.Key == nombreParte)
+                {
+                    prt.Rotar(angle, rx, ry, rz);
+                }
+            }
+        }
+
         override public void Trasladar(double dx, double dy, double dz)
         {
             foreach (DictionaryEntry parte in partes)
@@ -82,23 +108,23 @@ namespace ProgGrafica
              actualizarPuntos();
          }*/
         public void actualizarPuntos()
-         {
-             partes = new Hashtable();
+        {
+            partes = new Hashtable();
             //Pata izquierda delantera
-            partes.Add("PID",new Parte(0f + x, -0.25f * alto + y, 0.5f * profundo + z, 0.05f * ancho, 0.5f * alto, 0.05f * profundo));
-             //Pata derecha delantera
-             partes.Add("PDT",new Parte(0f + x, 0.25f * alto + y, 0.5f * profundo + z, 0.05f * ancho, 0.5f * alto, 0.05f * profundo));
-             //Pata trasera izquierda
-             partes.Add("PTI",new Parte(ancho + x, -0.25f * alto + y, 1f * profundo + z, 0.05f * ancho, alto, 0.05f * profundo));
-             //Pata trasera derecha
-             partes.Add("PTD",new Parte(ancho + x, 0.25f * alto + y, 1f * profundo + z, 0.05f * ancho, alto, 0.05f * profundo));
-             //Tabla de sentar
-             partes.Add("TDS",new Parte(0.5f * ancho + x, 0f + y, profundo + z, ancho, 0.025f * alto, profundo));
-             //Respaldar arriba
-             //   partes.AddLast(new Parte(1f+x, 0f+y, 2f+z, ancho, 0.025f * alto, 0.05f*profundo));
-             //Tabla de la espalda
-             partes.Add("TDE",new Parte(ancho + x, 0f + y, 1.5f * profundo + z, ancho, 0.5f * alto, 0.05f * profundo));
-         }
+            partes.Add("PID", new Parte(0f + x, -0.25f * alto + y, 0.5f * profundo + z, 0.05f * ancho, 0.5f * alto, 0.05f * profundo));
+            //Pata derecha delantera
+            partes.Add("PDT", new Parte(0f + x, 0.25f * alto + y, 0.5f * profundo + z, 0.05f * ancho, 0.5f * alto, 0.05f * profundo));
+            //Pata trasera izquierda
+            partes.Add("PTI", new Parte(ancho + x, -0.25f * alto + y, 1f * profundo + z, 0.05f * ancho, alto, 0.05f * profundo));
+            //Pata trasera derecha
+            partes.Add("PTD", new Parte(ancho + x, 0.25f * alto + y, 1f * profundo + z, 0.05f * ancho, alto, 0.05f * profundo));
+            //Tabla de sentar
+            partes.Add("TDS", new Parte(0.5f * ancho + x, 0f + y, profundo + z, ancho, 0.025f * alto, profundo));
+            //Respaldar arriba
+            //   partes.AddLast(new Parte(1f+x, 0f+y, 2f+z, ancho, 0.025f * alto, 0.05f*profundo));
+            //Tabla de la espalda
+            partes.Add("TDE", new Parte(ancho + x, 0f + y, 1.5f * profundo + z, ancho, 0.5f * alto, 0.05f * profundo));
+        }
         /*  override public void Trasladar(float dx, float dy, float dz)
          {
              x += dx;

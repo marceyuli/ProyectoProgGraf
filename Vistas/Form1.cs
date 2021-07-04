@@ -31,32 +31,34 @@ namespace ProyectoProgGrafica
         public Form1()
         {
             InitializeComponent();
-           // VSync = VSyncMode.On;
+            // VSync = VSyncMode.On;
             escenario = new Escenario();
             escenario.add("Silla0", new Silla(0, 0, 0, 0.5f, 1, 0.5f));
-             //escenario.add("ABC", new Silla(0, 0, 0, 1, 2, 1));
-             escenario.add("Silla2", new Silla(2, 2, 0, 0.5f, 1, 0.5f));
-             escenario.add("Silla3", new Silla(-4, -4,0, 0.5f, 1, 0.5f));
+            //escenario.add("ABC", new Silla(0, 0, 0, 1, 2, 1));
+            escenario.add("Silla2", new Silla(2, 2, 0, 0.5f, 1, 0.5f));
+            escenario.add("Silla3", new Silla(-4, -4, 0, 0.5f, 1, 0.5f));
         }
-        protected void RenderNew()
-        {
-            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
-            GL.LoadIdentity();
-            //GL.Rotate(theta, 1, 1, 1);
-            // escenario.Rotar(theta, 1, 1, 1);
+        //protected void RenderNew()
+        //{
+        //    GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+        //    GL.LoadIdentity();
+        //    //GL.Rotate(theta, 1, 1, 1);
+        //    // escenario.Rotar(theta, 1, 1, 1);
 
-            escenario.Trasladar(0.5f, 0.01f, 0.01f);
-            escenario.Escalar(0.05, 1.05, 1.05);
-            escenario.Dibujar();
-            aux = aux + 0.0001f;
-            //   Context.SwapBuffers();
-            theta += 0.1f;
-            if (theta > 360)
-            {
-                theta = theta - 360;
-            }
-            //  base.OnRenderFrame(e);
-        }
+        //    //escenario.Trasladar(0.5f, 0.01f, 0.01f);
+        //    //escenario.Escalar(0.05, 1.05, 1.05);
+        //    escenario.Dibujar();
+
+        //    aux = aux + 0.0001f;
+        //    //   Context.SwapBuffers();
+        //    theta += 0.1f;
+        //    if (theta > 360)
+        //    {
+        //        theta = theta - 360;
+        //    }
+        //    //  base.OnRenderFrame(e);
+        //}
+
         private void Render()
         {
             glControl.MakeCurrent();
@@ -71,11 +73,22 @@ namespace ProyectoProgGrafica
             //GL.Rotate(_angle, 0.0f, 1.0f, 0.0f);
 
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
-
+            // ROTA TODO FUNCA
             escenario.Rotar(_angle, 0.0f, 1.0f, 0.0f);
-            //escenario.Trasladar(0.5f, 0.01f, 0.01f);
-           // escenario.Escalar(1.05, 1.05, 1.05);
-           escenario.Dibujar();
+
+            escenario.Trasladar(0.01f, 0.01f, 0.01f);
+            escenario.Escalar(1f, 1f, 1f);
+            // ROTAR SOLO UNA PARTE ( NO FUNCA )
+            //escenario.Rotar(_angle, 0.0f, 1.0f, 0.0f, "Silla2", "TDS");
+
+            // DIBUJA TODO FUNCA
+            escenario.Dibujar();
+
+            // DIBUJA SOLO UNA PARTE FUNCA
+            //escenario.Dibujar("Silla0", "TDS");
+
+
+
             aux = aux + 0.0001f;
             //   Context.SwapBuffers();
             theta += 0.1f;
@@ -125,7 +138,7 @@ namespace ProyectoProgGrafica
 
             glControl.SwapBuffers();
         }
-    
+
 
         private void glControl_Load(object? sender, EventArgs e)
         {
