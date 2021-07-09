@@ -7,7 +7,7 @@ namespace ProgGrafica
 {
     class Escenario
     {
-        Hashtable objetos;
+        public Hashtable objetos;
         public Escenario()
         {
             objetos = new Hashtable();
@@ -76,6 +76,22 @@ namespace ProgGrafica
                 }
 
             }
+        }
+        public void Rotar(float rx, float ry, float rz, String nombreObjeto)
+        {
+            foreach (DictionaryEntry objeto in objetos)
+            {
+                Objeto obj = (Objeto)objeto.Value;
+                if (objeto.Key == nombreObjeto)
+                {
+                    obj.Rotar(rx, ry, rz);
+                }
+
+            }
+        }
+        public Objeto BuscarObjeto(string nombreObjeto)
+        {
+            return (Objeto)objetos[nombreObjeto];
         }
     }
 }

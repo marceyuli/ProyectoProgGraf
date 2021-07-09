@@ -3,6 +3,7 @@ using OpenTK.Mathematics;
 using OpenTK.Windowing.Common;
 using ProgGrafica;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,7 +17,6 @@ namespace ProyectoProgGrafica
 {
     public partial class Form1 : Form
     {
-        Silla silla = new Silla();
         Escenario escenario;
         float theta = 1;
         float aux = 1;
@@ -28,6 +28,52 @@ namespace ProyectoProgGrafica
 
         private Timer _timer = null!;
         private float _angle = 0.0f;
+
+        public string nombreObjetoSel;
+        public string nombreParteSel;
+        public string nombreOperacionSel;
+
+        private float _angleT = 0.0f;
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            foreach(DictionaryEntry objeto in escenario.objetos){
+                CbObjetos.Items.Add(objeto.Key);
+            }
+            CbOperacion.Items.Add("Trasladar");
+            CbOperacion.Items.Add("Rotar");
+            CbOperacion.Items.Add("Escalar");
+
+            nombreParteSel = "";
+
+        }
+
+        private void CbObjetos_SelectedValueChanged(object sender, EventArgs e)
+        {
+            nombreObjetoSel = this.CbObjetos.GetItemText(this.CbObjetos.SelectedItem);
+            CbPartes.Items.Clear();
+            foreach (DictionaryEntry objeto in escenario.BuscarObjeto(nombreObjetoSel).partes)
+            {
+                CbPartes.Items.Add(objeto.Key);
+            }
+            CbPartes.Items.Add("");
+        }
+
+        private void glControl_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CbPartes_SelectedValueChanged(object sender, EventArgs e)
+        {
+            nombreParteSel = this.CbPartes.GetItemText(this.CbPartes.SelectedItem);
+        }
+
+        private void CbOperacion_SelectedValueChanged(object sender, EventArgs e)
+        {
+            nombreOperacionSel = this.CbOperacion.GetItemText(this.CbOperacion.SelectedItem);
+        }
+
         public Form1()
         {
             InitializeComponent();
@@ -38,26 +84,6 @@ namespace ProyectoProgGrafica
             escenario.add("Silla2", new Silla(2, 2, 0, 0.5f, 1, 0.5f));
             escenario.add("Silla3", new Silla(-4, -4, 0, 0.5f, 1, 0.5f));
         }
-        //protected void RenderNew()
-        //{
-        //    GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
-        //    GL.LoadIdentity();
-        //    //GL.Rotate(theta, 1, 1, 1);
-        //    // escenario.Rotar(theta, 1, 1, 1);
-
-        //    //escenario.Trasladar(0.5f, 0.01f, 0.01f);
-        //    //escenario.Escalar(0.05, 1.05, 1.05);
-        //    escenario.Dibujar();
-
-        //    aux = aux + 0.0001f;
-        //    //   Context.SwapBuffers();
-        //    theta += 0.1f;
-        //    if (theta > 360)
-        //    {
-        //        theta = theta - 360;
-        //    }
-        //    //  base.OnRenderFrame(e);
-        //}
 
         private void Render()
         {
@@ -70,24 +96,44 @@ namespace ProyectoProgGrafica
             GL.MatrixMode(MatrixMode.Modelview);
             GL.LoadMatrix(ref lookat);
 
-            //GL.Rotate(_angle, 0.0f, 1.0f, 0.0f);
-
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
-            // ROTA TODO FUNCA
-            //escenario.Rotar( 0.0f, _angle, 0.0f);
 
-            escenario.Trasladar(0.01f, 0.01f, 0.01f);
-            escenario.Escalar(1f, 1f, 1f);
-            // ROTAR SOLO UNA PARTE ( NO FUNCA )
-            escenario.Rotar( 0.0f, _angle, 0.0f, "Silla2", "TDS");
+            //escenario.Trasladar(aux, 0.01f, 0.01f);
+            //escenario.Escalar(1f, 1f, 1f);
 
-            // DIBUJA TODO FUNCA
+            switch (nombreOperacionSel)
+            {
+                case "Escalar":
+                    escenario.Escalar(1f, 1f, 1f);
+                    break;
+                case "Trasladar":
+                    aux = 0.05f;
+                   
+                    //float x = float.Parse(TBX.Text);
+                    //float y = float.Parse(TBY.Text);
+                    //float z = float.Parse(TBZ.Text);
+
+                    double x = Convert.ToDouble(TBX.Text);
+                    double y = Convert.ToDouble(TBY.Text);
+                    double z = Convert.ToDouble(TBZ.Text);
+                    escenario.Trasladar((float) x, (float) y, (float) z);
+                    break;
+                case "Rotar":
+                    if (nombreParteSel == "")
+
+                    {
+                        escenario.Rotar(0.0f, _angle, 0.0f, nombreObjetoSel);
+                    }
+                    else
+                    {
+                        escenario.Rotar(0.0f, _angle, 0.0f, nombreObjetoSel, nombreParteSel);
+                    }
+                    break;
+
+            }
+
+            
             escenario.Dibujar();
-
-           // DIBUJA SOLO UNA PARTE FUNCA
-           // escenario.Dibujar("Silla0", "TDS");
-
-
 
             aux = aux + 0.0001f;
             //   Context.SwapBuffers();
@@ -96,45 +142,7 @@ namespace ProyectoProgGrafica
             {
                 theta = theta - 360;
             }
-            //GL.Begin(BeginMode.Quads);
-
-            //GL.Color4(Color4.Silver);
-            //GL.Vertex3(-1.0f, -1.0f, -1.0f);
-            //GL.Vertex3(-1.0f, 1.0f, -1.0f);
-            //GL.Vertex3(1.0f, 1.0f, -1.0f);
-            //GL.Vertex3(1.0f, -1.0f, -1.0f);
-
-            //GL.Color4(Color4.Honeydew);
-            //GL.Vertex3(-1.0f, -1.0f, -1.0f);
-            //GL.Vertex3(1.0f, -1.0f, -1.0f);
-            //GL.Vertex3(1.0f, -1.0f, 1.0f);
-            //GL.Vertex3(-1.0f, -1.0f, 1.0f);
-
-            //GL.Color4(Color4.Moccasin);
-            //GL.Vertex3(-1.0f, -1.0f, -1.0f);
-            //GL.Vertex3(-1.0f, -1.0f, 1.0f);
-            //GL.Vertex3(-1.0f, 1.0f, 1.0f);
-            //GL.Vertex3(-1.0f, 1.0f, -1.0f);
-
-            //GL.Color4(Color4.IndianRed);
-            //GL.Vertex3(-1.0f, -1.0f, 1.0f);
-            //GL.Vertex3(1.0f, -1.0f, 1.0f);
-            //GL.Vertex3(1.0f, 1.0f, 1.0f);
-            //GL.Vertex3(-1.0f, 1.0f, 1.0f);
-
-            //GL.Color4(Color4.PaleVioletRed);
-            //GL.Vertex3(-1.0f, 1.0f, -1.0f);
-            //GL.Vertex3(-1.0f, 1.0f, 1.0f);
-            //GL.Vertex3(1.0f, 1.0f, 1.0f);
-            //GL.Vertex3(1.0f, 1.0f, -1.0f);
-
-            //GL.Color4(Color4.ForestGreen);
-            //GL.Vertex3(1.0f, -1.0f, -1.0f);
-            //GL.Vertex3(1.0f, 1.0f, -1.0f);
-            //GL.Vertex3(1.0f, 1.0f, 1.0f);
-            //GL.Vertex3(1.0f, -1.0f, 1.0f);
-
-            //GL.End();
+           
 
             glControl.SwapBuffers();
         }
